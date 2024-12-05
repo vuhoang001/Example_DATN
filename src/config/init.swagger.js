@@ -6,12 +6,17 @@ const swaggerDocument = YAML.load(path.join(__dirname, "../docs/swagger.yaml"));
 
 const accessPath = YAML.load(path.join(__dirname, "../docs/access.docs.yaml"));
 
-const actorPath = YAML.load(path.join(__dirname, "../docs/actor.model.yaml"));
+const actorPath = YAML.load(path.join(__dirname, "../docs/actor.docs.yaml"));
+
+const categoryPath = YAML.load(
+  path.join(__dirname, "../docs/category.docs.yaml")
+);
 
 swaggerDocument.paths = {
   ...swaggerDocument.paths,
   ...accessPath.paths,
   ...actorPath.paths,
+  ...categoryPath.paths,
 };
 
 const setupSwagger = (app) => {

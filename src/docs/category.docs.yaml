@@ -1,0 +1,44 @@
+paths:
+  /category:
+    get:
+      summary: "get all success"
+      tags: [Category]
+      responses:
+        "200":
+          description: success
+        "400":
+          description: bad_request
+    post:
+      summary: "create category"
+      tags: [Category]
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name_category: { type: string }
+                desc_category: { type: string }
+      responses:
+        "200":
+          description: success
+        "400":
+          description: bad_request
+  /category/{idCategory}:
+    get:
+      summary: "Get by id"
+      tags: [Category]
+      parameters:
+        - name: idCategory
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: success
+        "400":
+          description: bad_request
