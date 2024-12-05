@@ -1,6 +1,6 @@
 const _ = require("lodash");
 const { Types } = require("mongoose");
-
+const URL_IMG = `${process.env.URL_SERVER}/uploads`;
 const getInfoData = ({ fields = [], object = {} }) => {
   return _.pick(object, fields);
 };
@@ -33,10 +33,16 @@ const cleanObject = (obj) => {
 
   return obj;
 };
+
+const url_image = (link) => {
+  const url = `${URL_IMG}/${link}`;
+  return url
+};
 module.exports = {
   getInfoData,
   getSelectData,
   getUnSelectData,
   cleanObject,
+  url_image,
   convertToObjectIdMongose,
 };

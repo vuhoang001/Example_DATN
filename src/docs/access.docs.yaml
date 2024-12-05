@@ -1,0 +1,64 @@
+paths:
+  /register:
+    post:
+      summary: "Register success!"
+      tags: [Access]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        "201":
+          description: created success
+        "400":
+          description: badrequest
+
+  /login:
+    post:
+      summary: "Login success"
+      tags: [Access]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email: { type: string }
+                password: { type: string }
+      responses:
+        "200":
+          description: login_success
+        "400":
+          description: bad_request
+
+  /logout:
+    post:
+      summary: "log_out_success"
+      tags: [Access]
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: success
+        "400":
+          description: bad_request
+
+  /handle:
+    post:
+      summary: "handle_success"
+      tags: [Access]
+      security:
+        - refreshToken: []
+      responses:
+        "200":
+          description: success
+        "400":
+          description: bad_request

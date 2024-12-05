@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt");
 const { createTokenPair } = require("../helpers/auth");
 
 const { getInfoData } = require("../utils/index");
-const key_token_service = require("../services/keyToken.service");
+const key_token_service = require("./keyToken.service");
 
 class AccountServices {
   register = async (payload) => {

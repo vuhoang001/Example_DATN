@@ -1,0 +1,103 @@
+paths:
+  /actor:
+    get:
+      summary: "Get all actor"
+      tags: [Actor]
+      responses:
+        "200":
+          description: success
+        "400":
+          description: bad_request
+    post:
+      summary: "Create actor"
+      tags: [Actor]
+      security:
+        - bearerAuth: []
+      requestBody:
+        description: Actor data with optional image and video
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                actor_name:
+                  type: string
+                actor_birth:
+                  type: string
+                  format: date
+                actor_thumbnail:
+                  type: string
+                  format: binary
+                actor_desc:
+                  type: string
+      responses:
+        "201":
+          description: create_success
+        "400":
+          description: bad_request
+
+  /actor/{idActor}:
+    get:
+      summary: "get_actor_by_id"
+      tags: [Actor]
+      parameters:
+        - name: idActor
+          in: path
+          required: true
+          schema:
+            type: string
+          description: id of actor
+      responses:
+        "200":
+          description: success
+        "404":
+          description: bad_request
+    patch:
+      summary: "Update actor by id"
+      tags: [Actor]
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: idActor
+          in: path
+          required: true
+          schema:
+            type: string
+          description: id of actor
+      requestBody:
+        description: Actor data with optional image and video
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                actor_name:
+                  type: string
+                actor_birth:
+                  type: string
+                  format: date
+                actor_thumbnail:
+                  type: string
+                  format: binary
+                actor_desc:
+                  type: string
+      responses:
+        "200":
+          description: success
+        "400":
+          description: bad_request
+    delete:
+      summary: "Delete success"
+      tags: [Actor]
+      parameters:
+        - name: idActor
+          in: path
+          required: true
+          schema:
+            type: string
+          description: id of actor
+      responses:
+        "200":
+          description: success
+        "400":
+          description: bad_request
