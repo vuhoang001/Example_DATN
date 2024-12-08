@@ -8,7 +8,8 @@ const categoryController = require("../controller/category.controller");
 
 router.get("/", AsyncHandle(categoryController.GetAll));
 router.get("/:idCategory", AsyncHandle(categoryController.GetById));
-// router.use(authentication);
+
+// router.use(authentication)
 
 router.post("/", AsyncHandle(categoryController.Create));
 router.patch("/:idCategory", AsyncHandle(categoryController.Update));
