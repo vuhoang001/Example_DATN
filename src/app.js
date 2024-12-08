@@ -19,12 +19,11 @@ setupSwagger(app);
 
 // Import database
 require("./database/init.mongodb");
+// Defined static files
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // Import router
 app.use("/", require("./routes/index.route"));
-
-// Defined static files
-app.use("/uploads", express.static(path.join(__dirname, "./uploads")));
 
 app.use((req, res, next) => {
   const err = new Error("nt fnd");

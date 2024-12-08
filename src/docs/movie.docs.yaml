@@ -1,0 +1,160 @@
+paths:
+  /movie:
+    post:
+      summary: "Create movie"
+      tags: [Movie]
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                movie_name:
+                  type: string
+                movie_director:
+                  type: array
+                  items:
+                    type: string
+                  nullable: true
+                movie_cast:
+                  type: array
+                  items:
+                    type: string
+                movie_desc:
+                  type: string
+                movie_rating:
+                  type: number
+                movie_poster:
+                  type: string
+                  format: binary
+                movie_video:
+                  type: string
+                  format: binary
+                movie_category:
+                  type: array
+                  items:
+                    type: string
+                movie_comment:
+                  type: object
+                  properties:
+                    user_comment:
+                      type: string
+                    comment:
+                      type: string
+                movie_duration:
+                  type: number
+      responses:
+        "200":
+          description: success
+        "400":
+          description: bad_request
+    get:
+      summary: "get all success"
+      tags: [Movie]
+      parameters:
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: integer
+            default: 1
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+            default: 20
+      responses:
+        "200":
+          description: "success"
+        "404":
+          description: "not found"
+  /movie/{idMovie}:
+    get:
+      summary: "get movie by id"
+      tags: [Movie]
+      parameters:
+        - name: idMovie
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: get movie by id
+        "400":
+          description: bad_request
+    patch:
+      summary: "update movie by id"
+      tags: [Movie]
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: idMovie
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                movie_name:
+                  type: string
+                movie_director:
+                  type: array
+                  items:
+                    type: string
+                  nullable: true
+                movie_cast:
+                  type: array
+                  items:
+                    type: string
+                movie_desc:
+                  type: string
+                movie_rating:
+                  type: number
+                movie_poster:
+                  type: string
+                  format: binary
+                movie_video:
+                  type: string
+                  format: binary
+                movie_category:
+                  type: array
+                  items:
+                    type: string
+                movie_comment:
+                  type: object
+                  properties:
+                    user_comment:
+                      type: string
+                    comment:
+                      type: string
+                movie_duration:
+                  type: number
+      responses:
+        "200":
+          description: success
+        "400":
+          description: bad_request
+    delete:
+      summary: "delete movie"
+      tags: [Movie]
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: idMovie
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: delete success
+        "400":
+          description: bad_request

@@ -89,6 +89,8 @@ paths:
     delete:
       summary: "Delete success"
       tags: [Actor]
+      security:
+        - bearerAuth: []
       parameters:
         - name: idActor
           in: path

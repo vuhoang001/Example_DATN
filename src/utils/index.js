@@ -36,7 +36,7 @@ const cleanObject = (obj) => {
 
 const url_image = (link) => {
   const url = `${URL_IMG}/${link}`;
-  return url
+  return url;
 };
 module.exports = {
   getInfoData,

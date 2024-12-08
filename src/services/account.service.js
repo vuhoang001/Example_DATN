@@ -26,7 +26,7 @@ class AccountServices {
 
     return {
       user: getInfoData({
-        fields: ["_id", "email"],
+        fields: ["_id", "email", "phone", "thumbnail", "status", "roles"],
         object: newAccount,
       }),
     };
@@ -62,7 +62,7 @@ class AccountServices {
 
     return {
       user: getInfoData({
-        fields: ["_id", "email"],
+        fields: ["_id", "email", "phone", "thumbnail", "status", "roles"],
         object: holderAccount,
       }),
       accessToken: tokens.access_token,

@@ -16,6 +16,43 @@ components:
       in: header
       name: x-rtoken-id
       description: Client ID for authentication
+  schemas:
+    Movie:
+      type: object
+      properties:
+        movie_name:
+          type: string
+        movie_director:
+          type: array
+          items:
+            type: string
+        movie_cast:
+          type: array
+          items:
+            type: string
+        movie_desc:
+          type: string
+        movie_rating:
+          type: number
+        movie_poster:
+          type: string
+          format: binary
+        movie_video:
+          type: string
+          format: binary
+        movie_category:
+          type: array
+          items:
+            type: string
+        movie_comment:
+          type: object
+          properties:
+            user_comment:
+              type: string
+            comment:
+              type: string
+        movie_duration:
+          type: number
 tags:
   - name: Access
     description: "User access management endpoints"

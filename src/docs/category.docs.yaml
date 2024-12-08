@@ -45,6 +45,8 @@ paths:
     patch:
       summary: "Update category"
       tags: [Category]
+      security:
+        - bearerAuth: []
       parameters:
         - name: idCategory
           in: path
@@ -68,6 +70,8 @@ paths:
     delete:
       summary: "Delete category"
       tags: [Category]
+      security:
+        - bearerAuth: []
       parameters:
         - name: idCategory
           in: path
