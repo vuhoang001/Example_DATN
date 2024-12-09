@@ -62,3 +62,41 @@ paths:
           description: success
         "400":
           description: bad_request
+  /me:
+    get:
+      summary: "get me success"
+      tags: [Access]
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: success
+        "404":
+          description: bad_request
+    patch:
+      summary: "update me success"
+      tags: [Access]
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                fullName:
+                  type: string
+                password:
+                  type: string
+                phone:
+                  type: string
+                thumbnail:
+                  type: string
+                  format: binary
+                address:
+                  type: string
+      responses:
+        "200":
+          description: update success
+        "400":
+          description: bad_request

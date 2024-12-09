@@ -7,6 +7,25 @@ const { getInfoData } = require("../utils/index");
 const key_token_service = require("./keyToken.service");
 
 class AccountServices {
+  GetMe = async (idAccount) => {
+    if (!idAccount)
+      throw new BadRequestError("Something went wrong can not find idAccount");
+    const data = accountModel.findOne({ _id: idAccount }).select("-password");
+    if (!data) throw new BadRequestError("Dont find any data");
+    return data;
+  };
+
+  UpdateMe = async (idAccount, payload) => {
+    if (!idAccount) throw new BadRequestError("Can not find idAccount");
+    const data = await accountModel.findOne({ _id: idAccount });
+    if (!data) throw new BadRequestError("dont find any data");
+
+    Object.assign(data, payload);
+
+    const result = await data.save();
+    if (!result) throw new BadRequestError("Somethingwentwrong");
+    return 1;
+  };
   register = async (payload) => {
     const { email, password } = payload;
     if (!email || !password)

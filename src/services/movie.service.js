@@ -18,7 +18,7 @@ class MovieService {
     return payload;
   };
 
-  GetAll = async (page = 1, limit = 20) => {
+  GetAll = async (page = 1, limit = 1000) => {
     const skip = (page - 1) * limit;
     const holderData = await movieModel.find().skip(skip).limit(limit);
     if (!holderData) throw new NotFoundError("Can find any holderData");
