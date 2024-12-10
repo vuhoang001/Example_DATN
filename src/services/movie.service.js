@@ -13,6 +13,11 @@ class MovieService {
       payload.movie_category = [];
     }
 
+    if (!Array.isArray(payload.movie_espisodes)) {
+      payload.movie_espisodes = [];
+    }
+    if (!payload.movie_type) throw new BadRequestError("Add type! please");
+
     const holderData = await movieModel.create(payload);
     if (!holderData) throw new BadRequestError("can not create holderData");
     return payload;

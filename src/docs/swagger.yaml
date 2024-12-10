@@ -53,6 +53,8 @@ components:
               type: string
         movie_duration:
           type: number
+    # Episode: 
+    #   espisode_name: 
 tags:
   - name: Access
     description: "User access management endpoints"

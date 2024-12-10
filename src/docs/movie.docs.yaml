@@ -11,40 +11,18 @@ paths:
             schema:
               type: object
               properties:
-                movie_name:
+                items:
                   type: string
-                movie_director:
-                  type: array
-                  items:
-                    type: string
-                  nullable: true
-                movie_cast:
-                  type: array
-                  items:
-                    type: string
-                movie_desc:
-                  type: string
-                movie_rating:
-                  type: number
+                  required: true
                 movie_poster:
+                  type: string
+                  format: binary
+                movie_trailer:
                   type: string
                   format: binary
                 movie_video:
                   type: string
-                  format: binary
-                movie_category:
-                  type: array
-                  items:
-                    type: string
-                movie_comment:
-                  type: object
-                  properties:
-                    user_comment:
-                      type: string
-                    comment:
-                      type: string
-                movie_duration:
-                  type: number
+                  format: binar
       responses:
         "200":
           description: success
@@ -103,21 +81,9 @@ paths:
             schema:
               type: object
               properties:
-                movie_name:
+                items:
                   type: string
-                movie_director:
-                  type: array
-                  items:
-                    type: string
-                  nullable: true
-                movie_cast:
-                  type: array
-                  items:
-                    type: string
-                movie_desc:
-                  type: string
-                movie_rating:
-                  type: number
+                  required: true
                 movie_poster:
                   type: string
                   format: binary
@@ -128,15 +94,6 @@ paths:
                   type: array
                   items:
                     type: string
-                movie_comment:
-                  type: object
-                  properties:
-                    user_comment:
-                      type: string
-                    comment:
-                      type: string
-                movie_duration:
-                  type: number
       responses:
         "200":
           description: success

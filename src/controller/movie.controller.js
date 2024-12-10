@@ -4,22 +4,32 @@ const { url_image } = require("../utils");
 
 class MovieController {
   Create = async (req, res, next) => {
-    const payload = req.body;
+    let payload = req.body;
+    payload = JSON.parse(payload.items);
     if (req.files.movie_poster && req.files.movie_poster.length > 0) {
       payload.movie_poster = url_image(
         req.files.movie_poster[0].filename.toString()
       );
     }
-
-    if (req.files.movie_video && req.files.movie_video.length > 0) {
+    if (
+      payload.movie_type == "M" &&
+      req.files.movie_video &&
+      req.files.movie_video.length > 0
+    ) {
       payload.movie_video = url_image(
         req.files.movie_video[0].filename.toString()
       );
     }
 
+    if (req.files.movie_trailer && req.files.movie_trailer.length > 0) {
+      payload.movie_trailer = url_image(
+        req.files.movie_trailer[0].filename.toString()
+      );
+    }
     new SuccessResponse({
       message: "create movie success",
       metadata: await movieService.Create(payload),
+      // metadata: payload,
     }).send(res);
   };
 
@@ -41,8 +51,29 @@ class MovieController {
   };
 
   Update = async (req, res, next) => {
-    const payload = req.body;
+    let payload = req.body;
     const idMovie = req.params.idMovie;
+    payload = JSON.parse(payload.items);
+    if (req.files.movie_poster && req.files.movie_poster.length > 0) {
+      payload.movie_poster = url_image(
+        req.files.movie_poster[0].filename.toString()
+      );
+    }
+    if (
+      payload.movie_type == "M" &&
+      req.files.movie_video &&
+      req.files.movie_video.length > 0
+    ) {
+      payload.movie_video = url_image(
+        req.files.movie_video[0].filename.toString()
+      );
+    }
+
+    if (req.files.movie_trailer && req.files.movie_trailer.length > 0) {
+      payload.movie_trailer = url_image(
+        req.files.movie_trailer[0].filename.toString()
+      );
+    }
     new SuccessResponse({
       message: "Update movie by id",
       metadata: await movieService.Edit(idMovie, payload),

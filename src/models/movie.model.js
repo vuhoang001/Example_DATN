@@ -15,21 +15,22 @@ const MovieSchema = new Schema(
     movie_desc: { type: String },
     movie_rating: { type: Number, default: 0 },
     movie_poster: { type: String },
+    movie_trailer: { type: String },
     movie_video: { type: String },
+    movie_type: {
+      type: String,
+      enum: ["M", "S"],
+      required: true,
+    },
     movie_category: {
       type: [Schema.Types.ObjectId],
       ref: "Category",
       default: [],
     },
-    movie_comment: {
-      user_comment: {
-        type: Schema.Types.ObjectId,
-        ref: "Actor",
-      },
-      comment: { type: String },
-    },
-    movie_duration: {
-      type: Number,
+    movie_espisodes: {
+      type: [Schema.Types.ObjectId],
+      ref: "Espisode",
+      default: [],
     },
   },
   { timestamps: true, collection: COLLECTION_NAME }

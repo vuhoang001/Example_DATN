@@ -5,7 +5,7 @@ const { url_image } = require("../utils/index");
 class ActorController {
   Create = async (req, res, next) => {
     let payload = req.body;
-    if (req.files.actor_thumbnail.length > 0) {
+    if (req.files.actor_thumbnail && req.files.actor_thumbnail.length > 0) {
       payload.actor_thumbnail = url_image(
         req.files.actor_thumbnail[0].filename.toString()
       );
@@ -34,7 +34,7 @@ class ActorController {
   EditById = async (req, res, next) => {
     const idActor = req.params.idActor;
     let payload = req.body;
-    if (req.files.actor_thumbnail.length > 0) {
+    if (req.files.actor_thumbnail && req.files.actor_thumbnail.length > 0) {
       payload.actor_thumbnail = url_image(
         req.files.actor_thumbnail[0].filename.toString()
       );

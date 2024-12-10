@@ -19,6 +19,10 @@ router.post(
       name: "movie_video",
       maxCount: 1,
     },
+    {
+      name: "movie_trailer",
+      maxCount: 1,
+    },
   ]),
   AsyncHandle(movieController.Create)
 );
@@ -28,6 +32,10 @@ router.patch(
     { name: "movie_poster", maxCount: 3 },
     {
       name: "movie_video",
+      maxCount: 1,
+    },
+    {
+      name: "movie_trailer",
       maxCount: 1,
     },
   ]),

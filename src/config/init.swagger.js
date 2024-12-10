@@ -14,12 +14,16 @@ const categoryPath = YAML.load(
 
 const moviePath = YAML.load(path.join(__dirname, "../docs/movie.docs.yaml"));
 
+const espisodePath = YAML.load(
+  path.join(__dirname, "../docs/episode.docs.yaml")
+);
 swaggerDocument.paths = {
   ...swaggerDocument.paths,
   ...accessPath.paths,
   ...actorPath.paths,
   ...categoryPath.paths,
   ...moviePath.paths,
+  ...espisodePath.paths,
 };
 
 const setupSwagger = (app) => {

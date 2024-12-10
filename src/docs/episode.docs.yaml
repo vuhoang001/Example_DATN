@@ -1,0 +1,47 @@
+paths:
+  /episode:
+    get:
+      summary: "Get episode success"
+      tags: [Episode]
+      responses:
+        "200":
+          description: success
+        "400":
+          description: bad_request
+    post:
+      summary: "create episode success"
+      tags: [Episode]
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                items:
+                  type: string
+                  required: true
+                link:
+                  type: string
+                  format: binary
+      responses:
+        "200":
+          description: success
+        "400":
+          description: bad_request
+  /episode/{idEpisode}:
+    get:
+      summary: "get episode by id"
+      tags: [Episode]
+      parameters:
+        - path: idEpisode
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200": 
+          description: success 
+        "400": 
+          description: bad_request
